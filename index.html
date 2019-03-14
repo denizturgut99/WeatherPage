@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <header class="weatherHeader">
+            <img src="./styles/weatherLogo.png" class="logo" alt="logo">
+            <p class="headerText">Ubiqum Weather Forecast</p>
+        </header>
+        <div class="container">
+            <div class="md-form mt-0">
+                <input class="form-control" v-model="search" v-on:keyup.enter="getCity()" type="text" placeholder="Search for a city" aria-label="Search">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="cityWeather" v-if="weatherData.length !== 0">
+                <div class="city"> {{weatherData.name}} </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div>
+                            <p><i class="fas fa-cloud"></i> Weather: {{weatherData.weather[0].main}} </p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-wind"></i> Wind Speed: {{weatherData.wind.speed}}km/h </p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-thermometer-half"></i> Temperature: {{weatherData.main.temp}} </p>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div>
+                            <p><i class="fas fa-temperature-low"></i> Min. Temperature: {{weatherData.main.temp_min}} </p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-temperature-high"></i> Max. Temperature: {{weatherData.main.temp_max}} </p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-tint"></i> Humidity: {{weatherData.main.humidity}}% </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
