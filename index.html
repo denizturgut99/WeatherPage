@@ -27,7 +27,6 @@
     <div id="app">
 
         <header class="weatherHeader">
-            <img src="./styles/weatherLogo.png" class="logo" alt="logo">
             <p class="headerText">Ubiqum Weather Forecast</p>
         </header>
         <div class="container">
@@ -48,18 +47,18 @@
                             <p><i class="fas fa-wind"></i> Wind Speed: {{weatherData.wind.speed}}km/h </p>
                         </div>
                         <div>
-                            <p><i class="fas fa-thermometer-half"></i> Temperature: {{weatherData.main.temp}} </p>
+                            <p><i class="fas fa-tint"></i> Humidity: {{weatherData.main.humidity}}% </p>
                         </div>
                     </div>
                     <div class="col-sm">
+                       <div>
+                            <p><i class="fas fa-thermometer-half"></i> Temperature: {{weatherData.main.temp}} </p>
+                        </div>
                         <div>
                             <p><i class="fas fa-temperature-low"></i> Min. Temperature: {{weatherData.main.temp_min}} </p>
                         </div>
                         <div>
                             <p><i class="fas fa-temperature-high"></i> Max. Temperature: {{weatherData.main.temp_max}} </p>
-                        </div>
-                        <div>
-                            <p><i class="fas fa-tint"></i> Humidity: {{weatherData.main.humidity}}% </p>
                         </div>
                     </div>
                 </div>
