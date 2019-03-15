@@ -2,6 +2,7 @@ body {
     background-image: url("https://i.pinimg.com/originals/ee/4f/78/ee4f78ea5b71aedddeadcaa6e3b3ffe9.jpg");
     background-repeat: no-repeat;
     background-size:auto;
+    background-color: black;
 }
 
 header {
@@ -56,4 +57,17 @@ header {
     border-radius: 5px;
     outline: none;
     color: #9DBFAF;
+}
+
+.nav {
+    display: block;
+}
+
+.date {
+    text-align: center;
+    color: red;
+}
+
+.last {
+    margin-bottom:20px;
 }

@@ -36,29 +36,70 @@
         </div>
 
         <div class="container">
+
             <div class="cityWeather" v-if="weatherData.length !== 0">
                 <div class="city"> {{weatherData.name}} </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <div>
-                            <p><i class="fas fa-cloud"></i> Weather: {{weatherData.weather[0].main}} </p>
-                        </div>
-                        <div>
-                            <p><i class="fas fa-wind"></i> Wind Speed: {{weatherData.wind.speed}}km/h </p>
-                        </div>
-                        <div>
-                            <p><i class="fas fa-tint"></i> Humidity: {{weatherData.main.humidity}}% </p>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" v-on:click="view = 'currentWeather'">Current Weather</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" v-on:click="view = 'forecast'">5 Day Forecast</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div v-show="view == 'currentWeather'" id="currentWeather">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div>
+                                    <p><i class="fas fa-cloud"></i> Weather: {{weatherData.weather[0].main}} </p>
+                                </div>
+                                <div>
+                                    <p><i class="fas fa-wind"></i> Wind Speed: {{weatherData.wind.speed}}km/h </p>
+                                </div>
+                                <div>
+                                    <p><i class="fas fa-tint"></i> Humidity: {{weatherData.main.humidity}}% </p>
+                                </div>
+
+                                <div>
+                                    <p><i class="fas fa-thermometer-half"></i> Temperature: {{weatherData.main.temp}} </p>
+                                </div>
+                                <div>
+                                    <p><i class="fas fa-temperature-low"></i> Min. Temperature: {{weatherData.main.temp_min}} </p>
+                                </div>
+                                <div>
+                                    <p><i class="fas fa-temperature-high"></i> Max. Temperature: {{weatherData.main.temp_max}} </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm">
-                       <div>
-                            <p><i class="fas fa-thermometer-half"></i> Temperature: {{weatherData.main.temp}} </p>
+                </div>
+                <div v-for="weather,i in weatherForecast" v-show="view == 'forecast'" >
+                   <div class="date">
+                            <p> {{weather.dt_txt}} </p>
                         </div>
-                        <div>
-                            <p><i class="fas fa-temperature-low"></i> Min. Temperature: {{weatherData.main.temp_min}} </p>
+                    <div class="row last">
+                        <div class="col-sm">
+                            <div>
+                                <p><i class="fas fa-cloud"></i> Weather: {{weather.weather[0].main}} </p>
+                            </div>
+                            <div>
+                                <p><i class="fas fa-wind"></i> Wind Speed: {{weather.wind.speed}}km/h </p>
+                            </div>
+                            <div>
+                                <p><i class="fas fa-tint"></i> Humidity: {{weather.main.humidity}}% </p>
+                            </div>
                         </div>
-                        <div>
-                            <p><i class="fas fa-temperature-high"></i> Max. Temperature: {{weatherData.main.temp_max}} </p>
+                        <div class="col-sm">
+                            <div>
+                                <p><i class="fas fa-thermometer-half"></i> Temperature: {{weather.main.temp}} </p>
+                            </div>
+                            <div>
+                                <p><i class="fas fa-temperature-low"></i> Min. Temperature: {{weather.main.temp_min}} </p>
+                            </div>
+                            <div>
+                                <p><i class="fas fa-temperature-high"></i> Max. Temperature: {{weather.main.temp_max}} </p>
+                            </div>
                         </div>
                     </div>
                 </div>
