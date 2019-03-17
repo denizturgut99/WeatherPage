@@ -57,14 +57,14 @@ var app = new Vue({
             var elem = this.weatherForecast;
 
             for (var i = 0; i < elem.length; i++) {
-                if (elem[i].weather[0].icon === "03d" || "03n") {
-                    elem[i].weather[0].icon = "http://clipart-library.com/images/gTe5B6bac.png"
+                if (elem[i].weather[0].icon === "01d" || "01n") {
+                    elem[i].weather[0].icon = "https://darksky.net/images/weather-icons/clear-day.png"
                 }
             }
         },
         getCity() {
             this.callAllFuncs();
-            //            this.setImage();
+//                        this.setImage();
             //            this.getDates();
         }
     }
