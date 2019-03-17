@@ -16,6 +16,7 @@ var app = new Vue({
             var forecastArr;
             var currentArr;
             var forDate;
+            var icons;
 
             fetch(url, {
                     mode: "cors"
@@ -28,7 +29,6 @@ var app = new Vue({
                     app.weatherData = newJson
                     currentArr = newJson
                     currentDate = newJson.dt
-                    //                    setImage()
                     //                    console.log(currentDate);
                 })
                 .catch(error => console.log(error));
@@ -40,26 +40,32 @@ var app = new Vue({
                     return response.json()
                 })
                 .then(function (forecastJson) {
-                    console.log(forecastJson);
-                    app.weatherForecast = forecastJson.list;
-                    forecastArr = forecastJson.list;
-//                    findDates();
+                    console.log(forecastJson)
+                    app.weatherForecast = forecastJson.list
+                    console.log(app.weatherForecast)
+                    forecastArr = forecastJson.list
+                    icons = forecastJson.list.weather.icon;
+                    //                forecastArr[0].weather[0].icon = "http://clipart-library.com/images/gTe5B6bac.png";
+                    //                    findDates();
                     //                    app.forecastDates = forecastJson.list.dt;
                     //                    forDate = forecastJson.list.dt;
                     //                    console.log(forDate);
                 })
                 .catch(error => console.log(error));
+        },
+        setImage() {
+            var elem = this.weatherForecast;
 
-            function findDates() {
-                for (var i = 0; i < this.forecastArr.length; i++) {
-                    this.forecastDates = forecastArr[i].dt;
+            for (var i = 0; i < elem.length; i++) {
+                if (elem[i].weather[0].icon === "03d" || "03n") {
+                    elem[i].weather[0].icon = "http://clipart-library.com/images/gTe5B6bac.png"
                 }
             }
-
         },
         getCity() {
             this.callAllFuncs();
-//            this.getDates();
+            //            this.setImage();
+            //            this.getDates();
         }
     }
 })

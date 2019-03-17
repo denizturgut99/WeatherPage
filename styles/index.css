@@ -95,3 +95,9 @@ header {
 .weatherCols {
     border-bottom: solid 1px white;
 }
+
+.icon {
+    width: 20px;
+    height: 20px;
+    color:white;
+}
