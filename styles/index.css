@@ -32,10 +32,16 @@ header {
     background-color:rgba(0, 0, 0, 0.5);
     text-align: center;
     margin-top: 20px;
-    font-size:25px;
+    font-size:15px;
     height: auto;
     font-family: "Courier New", Courier, monospace;
     border-radius:25px;
+    width:auto;
+}
+
+.navText {
+    font-size: 25px;
+    width: auto;
 }
 
 .city {
@@ -43,6 +49,7 @@ header {
     font-family: "Courier New", Courier, monospace;
     border-bottom: solid 2px white;
     font-size: 40px;
+    width: auto;
 }
 
 .space {
@@ -70,4 +77,21 @@ header {
 
 .last {
     margin-bottom:20px;
+}
+
+.clearSkyDay {
+/*
+    background-image: url("https://1.bp.blogspot.com/-eKDvU-L7j5s/V6LbEkzDIdI/AAAAAAAAeWo/xAbz1XlBYc4JxGFd12sJ1ossZKuveGCDACLcB/s1600/Climate%2BChange.gif");
+    background-size: cover;
+*/
+    color:orange;
+}
+
+.clearSkyNight {
+   background-image: url("https://thumbs.gfycat.com/SaltyFormalDuckbillcat-small.gif");
+    background-size: cover;
+}
+
+.weatherCols {
+    border-bottom: solid 1px white;
 }

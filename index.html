@@ -39,18 +39,18 @@
 
             <div class="cityWeather" v-if="weatherData.length !== 0">
                 <div class="city"> {{weatherData.name}} </div>
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs navText last" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link" v-on:click="view = 'currentWeather'">Current Weather</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" v-on:click="view = 'forecast'">5 Day Forecast</a>
+                        <a class="nav-link" v-on:click="view = 'forecast'">5 Day Hourly Forecast</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div v-show="view == 'currentWeather'" id="currentWeather">
-                        <div class="row">
-                            <div class="col-sm">
+                        <div>
+                            <div id="backG">
                                 <div>
                                     <p><i class="fas fa-cloud"></i> Weather: {{weatherData.weather[0].main}} </p>
                                 </div>
@@ -74,26 +74,29 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="weather,i in weatherForecast" v-show="view == 'forecast'" >
-                   <div class="date">
+                <div v-for="weather,i in weatherForecast" v-show="view == 'forecast'">
+                    <div class="row last weatherCols">
+                        <!--                        <div>-->
+                        <div class="date col-sm-3">
                             <p> {{weather.dt_txt}} </p>
                         </div>
-                    <div class="row last">
-                        <div class="col-sm">
+                        <div class="col-sm-3">
                             <div>
                                 <p><i class="fas fa-cloud"></i> Weather: {{weather.weather[0].main}} </p>
                             </div>
                             <div>
                                 <p><i class="fas fa-wind"></i> Wind Speed: {{weather.wind.speed}}km/h </p>
                             </div>
+                        </div>
+                        <div class="col-sm-3">
                             <div>
                                 <p><i class="fas fa-tint"></i> Humidity: {{weather.main.humidity}}% </p>
                             </div>
-                        </div>
-                        <div class="col-sm">
                             <div>
                                 <p><i class="fas fa-thermometer-half"></i> Temperature: {{weather.main.temp}} </p>
                             </div>
+                        </div>
+                        <div class="col-sm-3">
                             <div>
                                 <p><i class="fas fa-temperature-low"></i> Min. Temperature: {{weather.main.temp_min}} </p>
                             </div>
@@ -101,6 +104,7 @@
                                 <p><i class="fas fa-temperature-high"></i> Max. Temperature: {{weather.main.temp_max}} </p>
                             </div>
                         </div>
+                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -111,6 +115,4 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="index.js"></script>
-</body>
-
-</html>
+</body></html>
