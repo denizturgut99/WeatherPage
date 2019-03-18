@@ -9,14 +9,14 @@ var app = new Vue({
     },
     methods: {
         callAllFuncs() {
-            var url2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + this.search + "&appid=c86be36a020f3d6fc311354ac9cc9878&units=metric"
-            var url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.search + "&appid=c86be36a020f3d6fc311354ac9cc9878&units=metric"
+            var url2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + this.search + "&appid=c86be36a020f3d6fc311354ac9cc9878&units=metric";
+            var url = "https://api.openweathermap.org/data/2.5/weather?q=" + this.search + "&appid=c86be36a020f3d6fc311354ac9cc9878&units=metric";
 
             var currentDate;
             var forecastArr;
             var currentArr;
-            var forDate;
-            var icons;
+            var incorrect;
+            var allDates;
 
             fetch(url, {
                     mode: "cors"
@@ -29,7 +29,6 @@ var app = new Vue({
                     app.weatherData = newJson
                     currentArr = newJson
                     currentDate = newJson.dt
-                    //                    console.log(currentDate);
                 })
                 .catch(error => console.log(error));
 
@@ -42,30 +41,30 @@ var app = new Vue({
                 .then(function (forecastJson) {
                     console.log(forecastJson)
                     app.weatherForecast = forecastJson.list
-                    console.log(app.weatherForecast)
-                    forecastArr = forecastJson.list
-                    icons = forecastJson.list.weather.icon;
-                    //                forecastArr[0].weather[0].icon = "http://clipart-library.com/images/gTe5B6bac.png";
-                    //                    findDates();
-                    //                    app.forecastDates = forecastJson.list.dt;
-                    //                    forDate = forecastJson.list.dt;
-                    //                    console.log(forDate);
+                    forecastArr = forecastJson
+                    incorrect = forecastJson;
+                    message()
+//                getDate()
                 })
                 .catch(error => console.log(error));
-        },
-        setImage() {
-            var elem = this.weatherForecast;
 
-            for (var i = 0; i < elem.length; i++) {
-                if (elem[i].weather[0].icon === "01d" || "01n") {
-                    elem[i].weather[0].icon = "https://darksky.net/images/weather-icons/clear-day.png"
+            function message() {
+                if (incorrect.cod == "404") {
+                    document.getElementById("errorMessage").classList.remove("errorMessage")
+                } else {
+                    document.getElementById("errorMessage").classList.add("errorMessage")
                 }
             }
+            
+//            function getDate() {
+//                for(var i = 0; i < forecastArr.length; i++) {
+//                    this.allDates = forecastArr.list[i].dt;
+//                }
+//            }
+
         },
         getCity() {
             this.callAllFuncs();
-//                        this.setImage();
-            //            this.getDates();
         }
     }
 })

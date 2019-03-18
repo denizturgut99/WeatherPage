@@ -31,12 +31,12 @@
         </header>
         <div class="container">
             <div class="md-form mt-0">
-                <input class="form-control" v-model="search" v-on:keyup.enter="getCity()" type="text" placeholder="Search for a city" aria-label="Search">
+                <input class="form-control" v-model="search" v-on:keyup.enter="getCity()" type="text" placeholder="Search for a city" aria-label="Search" required>
             </div>
         </div>
 
         <div class="container">
-
+            <div id="errorMessage" class="errorMessage"><p class="errorMessageDesign"> Sorry, but we couldn't find the city you were looking for </p></div>
             <div class="cityWeather" v-if="weatherData.length !== 0">
                 <div class="city"> {{weatherData.name}} </div>
                 <ul class="nav nav-tabs navText last" id="myTab" role="tablist">
@@ -50,7 +50,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div v-show="view == 'currentWeather'" id="currentWeather">
                         <div>
-                            <div id="backG">
+                            <div>
                                 <div>
                                     <p><i class="fas fa-cloud"></i> Weather: {{weatherData.weather[0].main}} </p>
                                 </div>
@@ -81,7 +81,6 @@
                             <p> {{weather.dt_txt}} </p>
                         </div>
                         <div class="col-sm-3">
-                           
                             <div>
                                 <p><i class="fas fa-cloud"></i> Weather: {{weather.weather[0].main}} </p>
                             </div>

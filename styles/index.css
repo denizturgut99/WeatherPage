@@ -101,3 +101,16 @@ header {
     height: 20px;
     color:white;
 }
+
+input:invalid {
+ border: 2px dashed red
+}
+
+.errorMessage {
+    display: none;
+}
+
+.errorMessageDesign {
+    color:red;
+    font-size:30px;
+}
